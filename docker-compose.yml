@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:12-alpine
+    networks:
+      new:
+        aliases:
+          - database
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432"
+    healthcheck:
+      test: pg_isready -U root -d postgres
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  migrate:
+    image: migrate/migrate
+    networks:
+      - new
+    volumes:
+      - .:/migrations
+    command: ["-path", "/migrations", "-database",  "postgres://root:123456@database:5432/mydbname?sslmode=disable", "up", "3"]
+    links: 
+      - db
+    depends_on:
+      - db
+networks:
+      new:
