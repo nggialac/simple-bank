@@ -11,3 +11,4 @@ packages:
     emit_interface: false
     emit_exact_table_names: false
     # account table -> Account struct
+    emit_empty_slices: true

@@ -1,0 +1,15 @@
+
+### create account
+POST http://localhost:5000/accounts
+content-type: application/json
+
+{
+    "owner": "Lac Nguyen",
+    "currency": "YEN"
+}
+
+### get account by id
+GET http://localhost:5000/accounts/
+
+### list account
+GET http://localhost:5000/accounts?page_id=10&page_size=10

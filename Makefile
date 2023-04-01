@@ -19,6 +19,9 @@ sqlc:
 test:
 	go test -v -cover ./...
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc test
+server:
+	go run .
+
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc test server
 
 # docker run -v C:\Users\PC\go_projects\simple-bank\db\migration:/migrations migrate/migrate -path=/migrations/ -database postgres://root:123456@127.0.0.1:5432/postgres?sslmode=disable up 2
