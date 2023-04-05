@@ -4,8 +4,8 @@ POST http://localhost:5000/accounts
 content-type: application/json
 
 {
-    "owner": "Lac Nguyen",
-    "currency": "YEN"
+    "owner": "Hung Nguyen",
+    "currency": "USD"
 }
 
 ### get account by id
@@ -13,3 +13,14 @@ GET http://localhost:5000/accounts/
 
 ### list account
 GET http://localhost:5000/accounts?page_id=10&page_size=10
+
+### transfers
+POST http://localhost:5000/transfers
+content-type: application/json
+
+{
+    "from_account_id": 2,
+    "to_account_id": 3,
+    "amount": 100,
+    "currency": "USD"
+}
